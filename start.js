@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 
-mongoose.connect(process.env.DATABASE, { useMongoClient: true });
+mongoose.connect("mongodb://localhost:27017/box420", { useMongoClient: true });
 mongoose.Promise = global.Promise;
 mongoose.connection
   .on('connected', () => {
