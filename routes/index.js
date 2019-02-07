@@ -10,6 +10,13 @@ const basic = auth.basic({
   file: path.join(__dirname, '../users.htpasswd'),
 });
 
+// use controller
+router.use('/sensor', require('./sensor'));
+router.use('/reading', require('./reading'));
+
+// default controller
+
+
 router.get('/', (req, res) => {
   res.render('form', { title: 'Registration form' });
 });

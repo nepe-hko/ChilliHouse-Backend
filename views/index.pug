@@ -2,14 +2,14 @@ extends layout
 
 block content
 
-  if registrations.length
+  if readings.length
     table.listing-table.table-dark.table-striped
       tr
-        th Name
-        th Email
-      each registration in registrations
+        th Value
+        th Date
+      each reading in readings
         tr
-          td= registration.name
-          td= registration.email
+          td= reading.value
+          td= reading.date
   else
-    p No registrations yet :(
+    p No Data yet :(
