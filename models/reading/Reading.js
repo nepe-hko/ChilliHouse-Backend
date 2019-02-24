@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
 const readingSchema = new mongoose.Schema({
-    sensorId: String,
+    sensorId: Number,
     value: Number,
+    type: String,
+    unit: String,
     date: { type: Date, default: Date.now }
 });
 

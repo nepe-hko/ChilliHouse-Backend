@@ -1,0 +1,70 @@
+{
+    "sensors" : [
+        {
+            "id" : 1 ,
+            "name" : "Zuluft",
+            "type" : "temperature",
+            "pin" : 1,
+            "interval" : 10,
+            "historystyle" : "TemperatureRed"
+        },
+        {
+            "id" : 2,
+            "name" : "Abluft",
+            "type" : "temperature",
+            "pin" : 2,
+            "interval" : 10,
+            "historystyle" : "TemperatureRed"
+        },
+        {
+            "id" : 3,
+            "name" : "Box",
+            "type" : "temperature",
+            "pin" : 3,
+            "interval" : 10,
+            "historystyle" : "TemperatureRed"
+        },
+        {
+            "id" : 4,
+            "name" : "Zuluft",
+            "type" : "humidity",
+            "pin" : 1,
+            "interval" : 10,
+            "historystyle" : "HumidityBlue"
+        },
+        {
+            "id" : 5,
+            "name" : "Abluft",
+            "type" : "humidity",
+            "pin" : 2,
+            "interval" : 10,
+            "historystyle" : "HumidityBlue"
+        },
+        {
+            "id" : 6,
+            "name" : "Box",
+            "type" : "humidity",
+            "pin" : 3,
+            "interval" : 10,
+            "historystyle" : "HumidityBlue"
+        }
+    ],
+    "historys" : [
+        {
+            "id" : 0,
+            "name" : "Zuluft",
+            "sensors" : [1,4]
+        },
+        {
+            "id" : 1,
+            "name" : "Abluft",
+            "sensors" : [2,5]
+        },
+        {
+            "id" : 2,
+            "name" : "Box",
+            "sensors" : [3,6]
+        }
+    ]
+    
+}

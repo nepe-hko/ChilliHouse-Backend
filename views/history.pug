@@ -1,0 +1,17 @@
+extends layout
+
+block includes
+    script(src='/js/Chart.bundle.js')
+    script(src='/js/chartjs-plugin-zoom.js')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js")
+
+block content
+    div.container
+        canvas#chart
+
+    script.
+        document.addEventListener("DOMContentLoaded", function(event) {
+        	var config = !{JSON.stringify(config)};
+            ctx = document.getElementById('chart').getContext('2d');
+            var myChart = new Chart(ctx, config);
+        });
