@@ -9,7 +9,7 @@ module.exports = function(sensorConfig) {
     this.read = () => {
         return new Reading({
             sensorId: this.sensorId,
-            value: 55,
+            value: 72,
             type: "humidity",
             unit: "%"
         });

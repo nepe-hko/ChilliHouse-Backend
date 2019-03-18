@@ -9,7 +9,7 @@ module.exports = function(sensorConfig) {
     this.read = () => {
         return new Reading({
             sensorId: this.sensorId,
-            value: 26,
+            value: 18,
             type: "temperature",
             unit: "°C"
         });

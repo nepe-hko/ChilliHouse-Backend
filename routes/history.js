@@ -13,17 +13,18 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:historyId', (req, res) => {
-
-    var historyId = req.params.historyId;
     var readingsFromAllSensors = [];
+
+    var history = config.historys[req.params.historyId];
+    var sensors = history.sensors;
     
-    config.historys[historyId].sensors.forEach( sensorId => {
+    sensors.forEach( sensorId => {
         readingsFromAllSensors.push( Reading.find({ sensorId: sensorId }).exec());       
     });
     
     Promise.all(readingsFromAllSensors)
     .then( readingsFromAllSensors => {
-        var chartConfig = ChartConfigBuilder.build(readingsFromAllSensors, config);
+        var chartConfig = ChartConfigBuilder.build(readingsFromAllSensors, history);
         res.render('history', {config : chartConfig});
     })
     .catch( err => {

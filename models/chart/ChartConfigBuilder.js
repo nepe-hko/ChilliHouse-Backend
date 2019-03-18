@@ -1,13 +1,40 @@
-exports.build = (function(readingsFromAllSensors, config) {
+const config = require('../../config.json');
+const HumidityBlue = require('./styles/HumidityBlue');
+const TemperatureRed = require('./styles/TemperatureRed');
+
+exports.buildConfig = function(historyId) {
+
+    var history = config.historys[historyId];
+    var sensors = history.sensors;
+    var readingsFromAllSensors = [];
+    
+    sensors.forEach( sensorId => {
+        readingsFromAllSensors.push( Reading.find({ sensorId: sensorId }).exec());       
+    });
+    
+    Promise.all(readingsFromAllSensors)
+    .then( readingsFromAllSensors => {
+        return ChartConfigBuilder.build(readingsFromAllSensors, config);
+    })
+    .catch( err => {
+        console.log(err);
+        res.send("Something went Wrong! ${err}")
+    });
+
+    
+
+}
+
+exports.build = (function(readingsFromAllSensors, history) {
 
     var dataSets = [];
+    var historyName = history.name;
     
     readingsFromAllSensors.forEach( readings => {
-        
-        dataSets.push(createDataset(readings, colors));
-    })
 
-    console.log(readingsFromAllSensors.length)
+        var renderInfo = createRenderInfo(readings[0].sensorId);
+        dataSets.push(createDataset(readings, renderInfo));
+    });
 
     return {
         type: 'line',
@@ -17,9 +44,10 @@ exports.build = (function(readingsFromAllSensors, config) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: true,
             title: {
                 display: true,
-                text: 'HistoryTitel'
+                text: historyName
             },
             scales: {
                 xAxes: [{
@@ -27,7 +55,7 @@ exports.build = (function(readingsFromAllSensors, config) {
                     display: true,
                     scaleLabel: {
                         display: true,
-                        labelString: 'Date'
+                        labelString: 'Zeit'
                     },
                     ticks: {
                         major: {
@@ -38,11 +66,33 @@ exports.build = (function(readingsFromAllSensors, config) {
                 }],
                 yAxes: [{
                     display: true,
+                    id: 'A',
+                    position: 'left',
                     scaleLabel: {
                         display: true,
                         labelString: 'Temperatur'
+                    },
+                    ticks : {
+                        min: 15,
+                        max: 32,
+                        steps: 2
                     }
-                }]
+                },
+                {
+                    display: true,
+                    id: 'B',
+                    position: 'right',
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Luftfeuchte'
+                    },
+                    ticks : {
+                        min: 25,
+                        max: 85,
+                        steps: 5
+                    }
+                }
+                ]
             },
             pan: {
                 enabled: true,
@@ -67,48 +117,36 @@ function addDatasetToChart(dataset, chart) {
 
 var colors
 
-function createDataset(readings, colors) {
+function createRenderInfo(sensorId) {
+    
+   //suchen was sensorId für einen historystyle hat
+   var historyStyleName = config.sensors[sensorId].historyStyle;
+   var sensorName = config.sensors[sensorId].name;
 
-    var data = [];
+    if (historyStyleName == 'HumidityBlue') {
+        return HumidityBlue.build(sensorName);
+    }
+    else if (historyStyleName == 'TemperatureRed') {
+        return TemperatureRed.build(sensorName);
+    }
+}
+
+function createDataset(readings, renderInfo) {
+
+    var dataSet = [];
     readings.forEach( reading => {
-        data.push(
-            { x: reading.date, y: reading.value }
-        );
+        dataSet.push( { x: reading.date, y: reading.value } );
     });
-    
-    var dataInfo = {
-        data: data,
-    }
-    
-    var renderInfo = {
-        label: "label",
-        backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 0,
-        fill: true,
-        
-        cubicInterpolationMode: 'monotone',
-        pointRadius: 4
-    
-    }
-    
+
+    var yAxisID;
+    if(readings[0].type == 'temperature') yAxisID = 'A'
+    if(readings[0].type == 'humidity') yAxisID = 'B'
+
     return {
-        ...dataInfo,
-        ...renderInfo
+        yAxisID: yAxisID,
+        ...renderInfo,
+        data: dataSet
     }
+    
     
 }
