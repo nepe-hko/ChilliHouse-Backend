@@ -10,8 +10,7 @@ module.exports = function(sensorConfig) {
         return new Reading({
             sensorId: this.sensorId,
             value: 72,
-            type: "humidity",
-            unit: "%"
+            date: new Date().getTime()
         });
     }
 }

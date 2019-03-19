@@ -1,37 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const Reading = require('../models/reading/Reading');
-const ChartConfigBuilder = require('../models/chart/ChartConfigBuilder');
-
 const config = require('../config.json');
 
-
-
 router.get('/', (req, res) => {  
-    console.log("Request for Readings");
-    res.send('History');
-});
 
-router.get('/:historyId', (req, res) => {
-    var readingsFromAllSensors = [];
+    var history = config
+    var promises = []
 
-    var history = config.historys[req.params.historyId];
-    var sensors = history.sensors;
+    for (let i = 0; i < history.sensors.length; i++) {
+
+        promises[i] = Reading.find({ sensorId: history.sensors[i].id }).exec();
+        promises[i]
+        .then( readings => history.sensors[i].data = readings)
+        .catch( err => log(err) );
+    }
     
-    sensors.forEach( sensorId => {
-        readingsFromAllSensors.push( Reading.find({ sensorId: sensorId }).exec());       
-    });
-    
-    Promise.all(readingsFromAllSensors)
-    .then( readingsFromAllSensors => {
-        var chartConfig = ChartConfigBuilder.build(readingsFromAllSensors, history);
-        res.render('history', {config : chartConfig});
-    })
-    .catch( err => {
-        console.log(err);
-        res.send("Something went Wrong! ${err}")
-    });
+    Promise.all(promises)
+    .then( promises => res.send(JSON.stringify(history)))
+    .catch( err => console.log(err));
 
 });
-
 module.exports = router

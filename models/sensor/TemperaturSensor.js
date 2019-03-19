@@ -10,8 +10,7 @@ module.exports = function(sensorConfig) {
         return new Reading({
             sensorId: this.sensorId,
             value: 18,
-            type: "temperature",
-            unit: "°C"
+            date: new Date().getTime()
         });
     }
 }
