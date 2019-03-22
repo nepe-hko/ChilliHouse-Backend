@@ -9,7 +9,7 @@ module.exports = function(sensorConfig) {
     this.read = () => {
         return new Reading({
             sensorId: this.sensorId,
-            value: 18,
+            value: Math.floor((Math.random()*33) + 15),
             date: new Date().getTime()
         });
     }

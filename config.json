@@ -7,46 +7,6 @@
             "pin" : 1,
             "interval" : 10,
             "historyStyle" : "TemperatureRed"
-        },
-        {
-            "id" : 1,
-            "name" : "Abluft",
-            "type" : "temperature",
-            "pin" : 2,
-            "interval" : 10,
-            "historyStyle" : "TemperatureRed"
-        },
-        {
-            "id" : 2,
-            "name" : "Box",
-            "type" : "temperature",
-            "pin" : 3,
-            "interval" : 10,
-            "historyStyle" : "TemperatureRed"
-        },
-        {
-            "id" : 3,
-            "name" : "Zuluft",
-            "type" : "humidity",
-            "pin" : 1,
-            "interval" : 10,
-            "historyStyle" : "HumidityBlue"
-        },
-        {
-            "id" : 4,
-            "name" : "Abluft",
-            "type" : "humidity",
-            "pin" : 2,
-            "interval" : 10,
-            "historyStyle" : "HumidityBlue"
-        },
-        {
-            "id" : 5,
-            "name" : "Box",
-            "type" : "humidity",
-            "pin" : 3,
-            "interval" : 10,
-            "historyStyle" : "HumidityBlue"
         }
     ],
     "historys" : [
