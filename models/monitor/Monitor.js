@@ -7,17 +7,9 @@ module.exports = function(sensor){
     var job = new CronJob('0 * * * * *', () => {
         var reading = this.sensor.read();
         reading.save();
-        console.log("New Reading added");
     });
     
-    this.start = () => {
-        job.start();
-        console.log("Monitor started");
-    };
-
-    this.stop = () => {
-        this.job.stop();
-    };
-    
+    this.start = () => job.start();
+    this.stop = () => this.job.stop();
     
 }
