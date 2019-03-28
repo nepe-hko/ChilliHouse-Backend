@@ -8,17 +8,18 @@ exports.create = function(sensorsConfig) {
     
     sensorsConfig.forEach( sensorConfig => {
 
-        var newSensor;
-        
-        if (sensorConfig.type == "humidity") {
-            newSensor = new HumiditySensor(sensorConfig);
+        var sensor;
+        switch (sensorConfig.type) {
+
+            case "humidity":
+                sensor = new HumiditySensor(sensorConfig);
+                break;
+
+            case "temperature":
+                sensor = new TemperaturSensor(sensorConfig);
+                break;
         }
-        else if (sensorConfig.type = "temperature") {
-            newSensor = new TemperaturSensor(sensorConfig);
-        }
-        
-        monitors.push( new Monitor(newSensor));
+        monitors.push( new Monitor(sensor));
     });
-    
     return monitors;
 }

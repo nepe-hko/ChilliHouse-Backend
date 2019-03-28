@@ -4,8 +4,7 @@ const sensorSchema = new mongoose.Schema({
     id: Number,
     name: String,
     pin: Number,
-    interval: Number,
-    historyStyle: String
+    interval: Number
 });
 
 module.exports = mongoose.model('Sensor', sensorSchema);

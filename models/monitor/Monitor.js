@@ -1,15 +1,10 @@
-const Reading = require('../reading/Reading');
 const CronJob = require('cron').CronJob;
-const HumiditySensor = require('../sensor/HumiditySensor');
-const TemperaturSensor = require('../sensor/TemperaturSensor');
 
 module.exports = function(sensor){
 
-    
-
     this.sensor = sensor;
 
-    var job = new CronJob('*/30 * * * * *', () => {
+    var job = new CronJob('0 * * * * *', () => {
         var reading = this.sensor.read();
         reading.save();
         console.log("New Reading added");
@@ -25,8 +20,4 @@ module.exports = function(sensor){
     };
     
     
-}
-
-exports.create = function (sensorConfig) {
-    log("create monitors");
 }
