@@ -4,8 +4,8 @@
             "id" : 0 ,
             "name" : "Zuluft",
             "type" : "temperature",
-            "pin" : 1,
-            "interval" : 10,
+            "pin" : 4,
+            "interval" : 60,
             "historyStyle" : "TemperatureRed"
         }
     ],
