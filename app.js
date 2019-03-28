@@ -39,29 +39,6 @@ function init() {
         }).save();
     });
 
-    History.remove();
-    historys.forEach( history => {
-
-        var sensorsInHistory = [];
-        history.sensors.forEach( sensorId => {
-            sensorsInHistory.push(Sensor.findOne({id: sensorId}).exec());
-            
-        });
-
-        
-        Promise.all(sensorsInHistory).then( sensorsInHistory => {            
-            var h = new History({
-                id: history.id,
-                name: history.name
-            });
-            sensorsInHistory.forEach( sensor => h.sensors.push(sensor._id));
-            h.save();
-        })
-        .catch( err => console.log("fehlesr"));
-        
-
-    });
-
 }
 
 
