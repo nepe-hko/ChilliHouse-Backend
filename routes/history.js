@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
     for (let i = 0; i < history.sensors.length; i++) {
 
-        promises[i] = Reading.find({ sensorId: history.sensors[i].id }).exec();
+        promises[i] = Reading.find({ sensorId: history.sensors[i].id }, '-_id __v').exec();
         promises[i]
         .then( readings => history.sensors[i].data = readings)
         .catch( err => log(err) );

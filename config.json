@@ -8,23 +8,5 @@
             "interval" : 60,
             "historyStyle" : "TemperatureRed"
         }
-    ],
-    "historys" : [
-        {
-            "id" : 0,
-            "name" : "Zuluft",
-            "sensors" : [0,3]
-        },
-        {
-            "id" : 1,
-            "name" : "Abluft",
-            "sensors" : [1,4]
-        },
-        {
-            "id" : 2,
-            "name" : "Box",
-            "sensors" : [2,5]
-        }
-    ]
-    
+    ]    
 }
