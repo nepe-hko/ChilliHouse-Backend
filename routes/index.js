@@ -3,7 +3,7 @@ const router = express.Router();
 
 // use controller
 router.use('/history', require('./history'))
-router.use('/light', require('./light'))
+router.use('/device', require('./device'))
 
 
 // default controller

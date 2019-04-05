@@ -15,18 +15,18 @@ module.exports = function(pin) {
         }
     }
 
-    this.on = function() {
+    this.on = ()  => {
         this.active = true;
         console.log("Light on");
         
     }
 
-    this.off = function() {
+    this.off = ()  => {
         this.active = false;
         console.log("Light off");
     }
 
-    this.isOn = function() {
+    this.isOn = ()  => {
         return this.active;
     }
 }
