@@ -5,8 +5,8 @@ const DeviceController = require('../models/devices/DeviceController');
 router.post('/command', (req, res) => {
     //TODO: Request Parameter prüfen
     var command = {
-        deviceId : req.body.deviceId,
-        value : req.body.value
+        deviceId : req.params.deviceId,
+        value : req.params.value
     }
     DeviceController.action(command);
     res.sendStatus(200);
