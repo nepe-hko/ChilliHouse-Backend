@@ -8,6 +8,8 @@ router.post('/command', (req, res) => {
         deviceId : req.body.deviceId,
         value : req.body.value
     }
+    console.log(req.body.deviceId);
+    
     DeviceController.action(command);
     res.sendStatus(200);
 });
