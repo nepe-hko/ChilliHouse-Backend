@@ -1,11 +1,11 @@
 const Light = require('../devices/light/Light');
 
 
-exports.create = function(deviceConfig) {
+exports.create = devicesConfig => {
     
     var devices = [];
     
-    sensorsConfig.forEach( deviceConfig => {
+    devicesConfig.forEach( deviceConfig => {
 
         switch (deviceConfig.type) {
 

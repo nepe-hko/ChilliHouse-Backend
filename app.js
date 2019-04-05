@@ -9,7 +9,7 @@ const DeviceController = require('./models/devices/DeviceController')
 
 const config = require('./config.json');
 const sensorsConfig = config.sensors;
-const deviceConfig = config.devices;
+const devicesConfig = config.devices;
 const sensors = config.sensors;
 
 const app = express();
@@ -39,7 +39,7 @@ function init() {
     });
 
     //Cerate Devices
-    const devices = DeviceCreator.create(deviceConfig)
+    const devices = DeviceCreator.create(devicesConfig)
     DeviceController.init(devices)
 }
 
