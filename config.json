@@ -5,8 +5,16 @@
             "name" : "Zuluft",
             "type" : "temperature",
             "pin" : 4,
-            "interval" : 60,
-            "historyStyle" : "TemperatureRed"
+            "interval" : 60
         }
-    ]    
+    ],
+    "devices" : [
+        {
+            "id" : 0,
+            "name" : "Licht",
+            "type" : "onoff",
+            "pin" : 8
+        }
+    ]
+
 }

@@ -4,9 +4,12 @@ const bodyParser = require('body-parser');
 const routes = require('./routes/index');
 const Sensor = require('./models/sensor/Sensor');
 const MonitorCreator = require('./models/monitor/MonitorCreator')
+const DeviceCreator = require('./models/devices/DeviceCreator')
+const DeviceController = require('./models/devices/DeviceController')
 
 const config = require('./config.json');
 const sensorsConfig = config.sensors;
+const deviceConfig = config.devices;
 const sensors = config.sensors;
 
 const app = express();
@@ -22,6 +25,7 @@ init();
 
 function init() {
     
+    // Create Monitors
     const monitors = MonitorCreator.create(sensorsConfig)
     monitors.forEach( monitor => monitor.start());
     Sensor.remove().exec().catch(err => console.log(err));
@@ -33,6 +37,10 @@ function init() {
             interval: sensor.interval,
         }).save();
     });
+
+    //Cerate Devices
+    const devices = DeviceCreator.create(deviceConfig)
+    DeviceController.init(devices)
 }
 
 module.exports = app;
