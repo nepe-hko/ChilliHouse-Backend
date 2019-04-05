@@ -1,7 +1,7 @@
-module.exports = function() {
-    this.devices
-    this.init = devices => this.devices = devices;
-    this.action = command => {
+module.exports =  {
+    devices : [],
+    init : devices => this.devices = devices,
+    action : command => {
         var d = this.devices.find( device => device.id == command.deviceId);
         if (d != undefined) {
             d.execute(command)
