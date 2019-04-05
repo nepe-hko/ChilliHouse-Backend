@@ -12,8 +12,14 @@
         {
             "id" : 0,
             "name" : "Licht",
-            "type" : "onoff",
+            "type" : "light",
             "pin" : 8
+        },
+        {
+            "id" : 1,
+            "name" : "Luftbefeuchter",
+            "type" : "humidifyer",
+            "pin" : 13
         }
     ]
 
