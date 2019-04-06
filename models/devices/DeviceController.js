@@ -3,6 +3,8 @@ module.exports =  {
     init : devices => DEVICES = devices,
     
     action : command => {
+        console.log("COMMAND: " + command);
+        
         var d = DEVICES.find( device => device.id == command.deviceId);
         if (d != undefined) {
             d.execute(command)

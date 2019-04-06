@@ -1,6 +1,8 @@
-module.exports = function(pin) {
+module.exports = function(deviceConfig) {
     this.active = false;
-    this.pin;
+    this.name = deviceConfig.name;
+    this.id = deviceConfig.id;
+    this.pin = deviceConfig.pin
 
     this.execute = function(command) {
         switch (command.value) {
