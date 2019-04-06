@@ -11,6 +11,7 @@ module.exports = function(deviceConfig) {
                 break;
             case "off":
                 this.off();
+                break;
             default:
                 console.log("Undefined Command")
                 break;

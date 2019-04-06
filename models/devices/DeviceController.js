@@ -1,11 +1,9 @@
-global.DEVICES = []
 module.exports =  {
-    init : devices => DEVICES = devices,
+    devices : [],
+    init : devices => this.devices = devices,
     
     action : command => {
-        console.log("COMMAND: " + command);
-        
-        var d = DEVICES.find( device => device.id == command.deviceId);
+        var d = this.devices.find( device => device.id == command.deviceId);
         if (d != undefined) {
             d.execute(command)
         } else {
