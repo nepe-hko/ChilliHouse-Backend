@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const DeviceController = require('../models/devices/DeviceController');
 
-router.post('/command/:deviceId/:value', (req, res) => {
+router.post('/:deviceId/:value', (req, res) => {
     //TODO: Request Parameter prüfen
     var command = {
         deviceId : req.params.deviceId,
