@@ -10,7 +10,9 @@ module.exports =  {
             console.log("Device with deviceId " + command.deviceId + " not found");
         }
         
-    }
+    },
+
+    getDevices : () => { return devices }
 
     
 }

@@ -1,5 +1,6 @@
-const Light = require('../devices/light/Light');
-
+const Light = require('./Light');
+const Humidifyer = require('./Humidifyer');
+const Dehumidifyer = require('./Dehumidifyer');
 
 exports.create = devicesConfig => {
     
@@ -14,7 +15,15 @@ exports.create = devicesConfig => {
                 break;
 
             case "humidifyer":
-                devices.push(new Light(deviceConfig));
+                devices.push(new Humidifyer(deviceConfig));
+                break;
+
+            case "dehumidifyer":
+                devices.push(new Dehumidifyer(deviceConfig));
+                break;
+            
+            default:
+                console.log(deviceConfig.type + " is not implemented yet"); 
                 break;
         }
     });

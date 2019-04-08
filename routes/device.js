@@ -14,4 +14,8 @@ router.post('/:deviceId/:value', (req, res) => {
     res.sendStatus(200);
 });
 
+router.get('/', (req, res) => {
+    res.send(JSON.stringify(DeviceController.getDevices()))
+});
+
 module.exports = router

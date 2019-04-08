@@ -20,16 +20,13 @@ module.exports = function(deviceConfig) {
 
     this.on = ()  => {
         this.active = true;
-        console.log("Light on");
-        
+        console.log("Humidifyer on");
     }
 
     this.off = ()  => {
         this.active = false;
-        console.log("Light off");
+        console.log("Humidifyer off");
     }
 
-    this.isOn = ()  => {
-        return this.active;
-    }
+    this.isOn = ()  => { return this.active }
 }
