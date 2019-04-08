@@ -12,7 +12,11 @@ module.exports =  {
         
     },
 
-    getDevices : () => { return this.devices }
+    getDevices : () => {
+        return { 
+            "devices" : this.devices
+        }
+    }
 
     
 }
