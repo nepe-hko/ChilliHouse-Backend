@@ -23,6 +23,8 @@
     "node-dht-sensor": "^0.0.34"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0",
     "nodemon": "^1.14.10"
   }
 }

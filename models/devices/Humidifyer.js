@@ -28,5 +28,7 @@ module.exports = function(deviceConfig) {
         console.log("Humidifyer off");
     }
 
-    this.isOn = ()  => { return this.active }
+    this.isOn = ()  => { 
+        return this.active;
+    }
 }
