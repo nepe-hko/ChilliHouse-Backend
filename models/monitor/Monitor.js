@@ -4,7 +4,7 @@ module.exports = function(sensor){
 
     this.sensor = sensor;
 
-    var job = new CronJob('0 * * * * *', () => {
+    var job = new CronJob('0 */15 * * * *', () => {
         var reading = this.sensor.read();
         reading.save();
     });
