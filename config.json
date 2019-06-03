@@ -6,6 +6,13 @@
             "type" : "temperature",
             "pin" : 4,
             "interval" : 60
+        },
+        {
+            "id" : 1 ,
+            "name" : "Zuluft",
+            "type" : "humidity",
+            "pin" : 4,
+            "interval" : 60
         }
     ],
     "devices" : [
