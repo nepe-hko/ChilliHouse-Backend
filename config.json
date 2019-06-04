@@ -2,17 +2,19 @@
     "sensors" : [
         {
             "id" : 0 ,
-            "name" : "Zuluft",
+            "name" : "Temperatur Oben",
             "type" : "temperature",
             "pin" : 4,
-            "interval" : 60
+            "interval" : 60,
+            "chart" : "Oben"
         },
         {
             "id" : 1 ,
-            "name" : "Zuluft",
+            "name" : "Luftfeuchte Oben",
             "type" : "humidity",
             "pin" : 4,
-            "interval" : 60
+            "interval" : 60,
+            "chart" : "Oben"
         }
     ],
     "devices" : [
