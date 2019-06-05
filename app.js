@@ -36,7 +36,7 @@ function init() {
             name: sensor.name,
             pin: sensor.pin,
             interval: sensor.interval,
-            chart: sensor.chart,
+            charts: sensor.charts,
         }).save();
     });
 

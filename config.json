@@ -6,7 +6,7 @@
             "type" : "temperature",
             "pin" : 4,
             "interval" : 60,
-            "chart" : "Oben"
+            "charts" : ["oben"]
         },
         {
             "id" : 1 ,
@@ -14,7 +14,7 @@
             "type" : "humidity",
             "pin" : 4,
             "interval" : 60,
-            "chart" : "Oben"
+            "charts" : ["oben","nurluftfeuchte"]
         }
     ],
     "devices" : [

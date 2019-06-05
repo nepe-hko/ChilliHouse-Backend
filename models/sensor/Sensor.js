@@ -5,7 +5,7 @@ const sensorSchema = new mongoose.Schema({
     name: String,
     pin: Number,
     interval: Number,
-    chart: String,
+    charts: Array,
 });
 
 module.exports = mongoose.model('Sensor', sensorSchema);
