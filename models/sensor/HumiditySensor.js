@@ -6,7 +6,7 @@ module.exports = function(sensor) {
 
     this.name = sensor.name;
     this.pin = sensor.pin;
-    this.sensorId = sensor._id.toHexString();
+    this.sensorId = sensor._id;
     this.type = 22;
 
     this.read = () => {
