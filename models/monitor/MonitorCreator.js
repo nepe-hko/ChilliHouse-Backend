@@ -11,7 +11,7 @@ exports.create = function() {
     
     var monitors = [];
 
-    Sensor.findall()
+    Sensor.findAll()
     .then( sensors => {
         sensors.forEach( sensor => {
             var newSensor;
