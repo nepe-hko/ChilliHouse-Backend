@@ -9,7 +9,7 @@ module.exports = function() {
         if(!Stitch.hasAppClient('box420app-ehwav')) {
             this.client = Stitch.initializeDefaultAppClient('box420app-ehwav');
         }
-        
+
         return new Promise((resolve, reject) => {
             this.client.auth.loginWithCredential(new AnonymousCredential())
             .then( () => resolve())
@@ -26,12 +26,10 @@ module.exports = function() {
             .then( () => {
                 this.client.callFunction("sensor_findAll").then(sensors => {
                     resolve(sensors);
-                    this.client.close()
                 });
             })
             .catch( err => {
                 reject();
-                this.client.close()
                 console.log(err)
             });
         });

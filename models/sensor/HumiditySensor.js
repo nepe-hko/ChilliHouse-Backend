@@ -2,11 +2,11 @@ const Reading = require('../reading/Reading');
 const sensorLib = require("node-dht-sensor");
 
 
-module.exports = function(sensorConfig) {
+module.exports = function(sensor) {
 
-    this.name = sensorConfig.name;
-    this.pin = sensorConfig.pin;
-    this.sensorId = sensorConfig.id;
+    this.name = sensor.name;
+    this.pin = sensor.pin;
+    this.sensorId = sensor._id.toHexString();
     this.type = 22;
 
     this.read = () => {
