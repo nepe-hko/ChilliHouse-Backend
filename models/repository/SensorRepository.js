@@ -23,11 +23,12 @@ module.exports = function() {
                 this.client.callFunction("sensor_findAll").then(sensors => {
                     resolve(sensors);
                     this.client.close()
-                }).catch( err => {
-                    reject();
-                    this.client.close()
-                    console.log(err)
                 });
+            })
+            .catch( err => {
+                reject();
+                this.client.close()
+                console.log(err)
             });
         });
     }
