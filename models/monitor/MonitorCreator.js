@@ -11,23 +11,30 @@ exports.create = function() {
     
     var monitors = [];
 
-    Sensor.findAll()
-    .then( sensors => {
-        sensors.forEach( sensor => {
-            var newSensor;
-            switch (sensor.type) {
+    return new Promise((resolve, reject) => {
+        Sensor.findAll()
+        .then( sensors => {
+            sensors.forEach( sensor => {
+                var newSensor;
+                switch (sensor.type) {
 
-            case "humidity":
-                newSensor = new HumiditySensor(sensor);
-                break;
+                case "humidity":
+                    newSensor = new HumiditySensor(sensor);
+                    break;
 
-            case "temperature":
-                newSensor = new TemperaturSensor(sensor);
-                break;
-        }
-        monitors.push( new Monitor(newSensor));
+                case "temperature":
+                    newSensor = new TemperaturSensor(sensor);
+                    break;
+                }
+
+                monitors.push( new Monitor(newSensor));
+            });
+
+            resolve(monitors);
+        })
+        .catch( err => {
+            reject();
+            console.log(err);
         });
-        return monitors;
     });
-    
 }

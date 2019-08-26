@@ -28,8 +28,11 @@ function init() {
     
     // Create Monitors
 
-    const monitors = MonitorCreator.create()
-    monitors.forEach( monitor => monitor.start());
+    MonitorCreator.create()
+    .then( monitors => {
+        monitors.forEach( monitor => monitor.start());
+    });
+
 
     //Cerate Devices
     //const devices = DeviceCreator.create(devicesConfig)
