@@ -27,7 +27,7 @@ exports.create = function() {
         }
         monitors.push( new Monitor(newSensor));
         });
+        return monitors;
     });
     
-    return monitors;
 }
