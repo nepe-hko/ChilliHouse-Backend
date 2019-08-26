@@ -7,7 +7,8 @@ module.exports = function(sensor){
 
     var job = new CronJob('0 */15 * * * *', () => {
         var reading = this.sensor.read();
-        Reading.add(reading);
+        Reading.add(reading)
+        .catch( err => console.log(err));
     });
     
     this.start = () => job.start();
