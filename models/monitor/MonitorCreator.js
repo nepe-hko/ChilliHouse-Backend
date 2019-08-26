@@ -33,7 +33,7 @@ exports.create = function() {
             resolve(monitors);
         })
         .catch( err => {
-            reject();
+            reject(err);
             console.log(err);
         });
     });

@@ -23,11 +23,12 @@ module.exports = function() {
                 this.client.callFunction("reading_findAll").then(readings => {
                     resolve(readings);
                     this.client.close()
-                }).catch( err => {
-                    reject();
-                    this.client.close()
-                    console.log(err)
                 });
+            })
+            .catch( err => {
+                reject();
+                this.client.close()
+                console.log(err)
             });
         });
     }
