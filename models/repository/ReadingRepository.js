@@ -49,12 +49,10 @@ module.exports = function() {
             .then( () => {
                 this.client.callFunction("reading_add", [newItem]).then( () => {
                     resolve();
-                    this.client.close()
                 });
             })
             .catch( err => {
                 reject();
-                this.client.close()
                 console.log(err)
             });
         });
