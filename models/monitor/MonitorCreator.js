@@ -5,7 +5,7 @@ const Monitor = require('./Monitor');
 
 exports.create = function() {
 
-    Sensor = new SensorRepository();
+    var Sensor = new SensorRepository();
     
     var monitors = [];
 
