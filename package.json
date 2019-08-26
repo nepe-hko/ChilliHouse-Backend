@@ -18,9 +18,11 @@
     "express": "^4.16.2",
     "express-validator": "^4.3.0",
     "http-auth": "^3.2.3",
+    "mongodb-stitch-core-services-mongodb-remote": "^4.5.0",
+    "mongodb-stitch-server-sdk": "^4.5.0",
     "mongoose": "^4.13.9",
-    "pug": "^2.0.0-rc.4",
-    "node-dht-sensor": "^0.0.34"
+    "node-dht-sensor": "^0.0.34",
+    "pug": "^2.0.0-rc.4"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

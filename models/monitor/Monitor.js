@@ -1,12 +1,13 @@
 const CronJob = require('cron').CronJob;
-
+const ReadingRepository = require('../repository/ReadingRepository');
+var Reading = new ReadingRepository();
 module.exports = function(sensor){
 
     this.sensor = sensor;
 
     var job = new CronJob('0 */15 * * * *', () => {
         var reading = this.sensor.read();
-        reading.save();
+        Reading.add(reading);
     });
     
     this.start = () => job.start();

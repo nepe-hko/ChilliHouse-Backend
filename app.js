@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
-const Sensor = require('./models/sensor/Sensor');
+
 const MonitorCreator = require('./models/monitor/MonitorCreator')
 const DeviceCreator = require('./models/devices/DeviceCreator')
 const DeviceController = require('./models/devices/DeviceController')
@@ -27,22 +27,13 @@ init();
 function init() {
     
     // Create Monitors
-    const monitors = MonitorCreator.create(sensorsConfig)
+
+    const monitors = MonitorCreator.create()
     monitors.forEach( monitor => monitor.start());
-    Sensor.remove().exec().catch(err => console.log(err));
-    sensors.forEach( sensor => {
-        new Sensor({
-            id: sensor.id,
-            name: sensor.name,
-            pin: sensor.pin,
-            interval: sensor.interval,
-            charts: sensor.charts,
-        }).save();
-    });
 
     //Cerate Devices
-    const devices = DeviceCreator.create(devicesConfig)
-    DeviceController.init(devices)
+    //const devices = DeviceCreator.create(devicesConfig)
+    //DeviceController.init(devices)
 }
 
 module.exports = app;
