@@ -25,6 +25,8 @@ module.exports = function() {
         this.init()
             .then( () => {
                 this.client.callFunction("sensor_findAll").then(sensors => {
+                    console.log("Received Sensors from DB");
+                    console.log(sensors)
                     resolve(sensors);
                 });
             })

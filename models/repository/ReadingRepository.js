@@ -42,6 +42,9 @@ module.exports = function() {
             "date": reading.date
         }
 
+        console.log("Add Reading to DB");
+        console.log(newItem);
+
         return new Promise((resolve, reject) => {
             this.init()
             .then( () => {
