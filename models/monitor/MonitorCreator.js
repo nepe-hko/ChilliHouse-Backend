@@ -1,10 +1,12 @@
 const TemperaturSensor = require('../sensor/TemperaturSensor');
 const HumiditySensor = require('../sensor/HumiditySensor');
-const SensorRepository = require('../repository/SensorRepository');
+
 const Monitor = require('./Monitor');
 
-exports.create = function() {
 
+
+exports.create = function() {
+    const SensorRepository = require('../repository/SensorRepository');
     var Sensor = new SensorRepository();
     
     var monitors = [];
