@@ -1,26 +1,24 @@
-const Reading = require('../reading/Reading');
+
 const sensorLib = require("node-dht-sensor");
 const { BSON } = require('mongodb-stitch-server-sdk');
 
 
 module.exports = function(sensor) {
 
-    this.id = new BSON.ObjectID(sensor._id);
+    this.id = new BSON.ObjectID(sensor._id).toString();
     this.type = sensor.type;
     this.name = sensor.name;
     this.pin = sensor.pin;
     this.interval = sensor.interval
-    console.log(this.id);
-    console.log(this.id.toString());
 
     this.read = () => {
 
         var reading = sensorLib.read(22, this.pin);
 
-        return new Reading({
-            sensorId: this.id.toString(),
+        return {
+            sensorId: this.id,
             value: reading.temperature.toFixed(1),
             date: new Date().getTime()
-        });
+        }
     }
 }
