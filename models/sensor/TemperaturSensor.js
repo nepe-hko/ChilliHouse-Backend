@@ -5,7 +5,7 @@ const { BSON } = require('mongodb-stitch-server-sdk');
 
 module.exports = function(sensor) {
 
-    this.id = BSON.ObjectID(sensor._id);
+    this.id = new BSON.ObjectID(sensor._id);
     this.type = sensor.type;
     this.name = sensor.name;
     this.pin = sensor.pin;
