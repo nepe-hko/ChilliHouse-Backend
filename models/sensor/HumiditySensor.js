@@ -4,7 +4,7 @@ const sensorLib = require("node-dht-sensor");
 
 module.exports = function(sensor) {
 
-    this.id = sensor._id.toString();
+    this.id = sensor._id.$oid;
     this.type = sensor.type;
     this.name = sensor.name;
     this.pin = sensor.pin;
