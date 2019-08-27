@@ -1,13 +1,11 @@
 const { Stitch, AnonymousCredential} = require('mongodb-stitch-server-sdk');
 
-module.exports = function() {
+module.exports = function(client) {
 
-    this.client = null;
+    this.client = client;
 
     this.init = () => {
-        if (this.client == null) {
-            this.client = Stitch.initializeDefaultAppClient('box420app-ehwav');
-        }
+
         return new Promise((resolve, reject) => {
             this.client.auth.loginWithCredential(new AnonymousCredential())
             .then( () => resolve())

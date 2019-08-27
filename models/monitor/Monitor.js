@@ -1,8 +1,8 @@
 const CronJob = require('cron').CronJob;
 const ReadingRepository = require('../repository/ReadingRepository');
-var Reading = new ReadingRepository();
-module.exports = function(sensor){
 
+module.exports = function(sensor, client){
+    var Reading = new ReadingRepository(client);
     this.sensor = sensor;
 
     var job = new CronJob('0 */15 * * * *', () => {

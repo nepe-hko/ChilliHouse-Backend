@@ -7,6 +7,8 @@ const MonitorCreator = require('./models/monitor/MonitorCreator')
 const DeviceCreator = require('./models/devices/DeviceCreator')
 const DeviceController = require('./models/devices/DeviceController')
 
+const { Stitch, AnonymousCredential} = require('mongodb-stitch-server-sdk');
+
 const config = require('./config.json');
 const sensorsConfig = config.sensors;
 const devicesConfig = config.devices;
@@ -25,10 +27,12 @@ app.use('/', routes);
 init();
 
 function init() {
+
+    const client = Stitch.initializeDefaultAppClient('box420app-ehwav');
     
     // Create Monitors
 
-    MonitorCreator.create()
+    MonitorCreator.create(client)
     .then( monitors => {
         monitors.forEach( monitor => monitor.start());
     });

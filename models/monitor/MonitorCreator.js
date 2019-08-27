@@ -5,9 +5,9 @@ const Monitor = require('./Monitor');
 
 
 
-exports.create = function() {
+exports.create = function(client) {
     const SensorRepository = require('../repository/SensorRepository');
-    var Sensor = new SensorRepository();
+    var Sensor = new SensorRepository(client);
     
     var monitors = [];
 
@@ -27,7 +27,7 @@ exports.create = function() {
                     break;
                 }
 
-                monitors.push( new Monitor(newSensor));
+                monitors.push( new Monitor(newSensor, client));
             });
 
             resolve(monitors);
