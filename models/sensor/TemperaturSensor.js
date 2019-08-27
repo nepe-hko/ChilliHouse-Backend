@@ -10,6 +10,8 @@ module.exports = function(sensor) {
     this.name = sensor.name;
     this.pin = sensor.pin;
     this.interval = sensor.interval
+    console.log(this.id);
+    console.log(this.id.toString());
 
     this.read = () => {
 
