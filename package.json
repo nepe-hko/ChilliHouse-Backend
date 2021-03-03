@@ -19,7 +19,7 @@
     "express-validator": "^4.3.0",
     "http-auth": "^3.2.3",
     "mongoose": "^4.13.9",
-    "pug": "^2.0.0-rc.4",
+    "pug": "^3.0.1",
     "node-dht-sensor": "^0.0.34"
   },
   "devDependencies": {
